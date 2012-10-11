@@ -1,0 +1,19 @@
+// Modal
+.modal.hide.fade{:id => "meal#{meal.id}"}
+  .modal-header
+    %h3= meal.date.strftime("%A")
+  .modal-body
+    %h4 Foods in this meal
+    %ul#foodsInMeal.connectedSortable
+      %li Drag them here.
+      - meal.foods.each do |food|
+        %li= food.name
+    %h4 All the foods
+    %ul#foods.connectedSortable
+      - meal.foods_not_in_meal.each do |food|
+        %li= food.name
+    .input-append
+      = form_for @food, :url => {:action => 'create', :controller => 'foods'}, :remote => true do |f|
+        = f.text_field :name, :class => "input-large"
+        = f.collection_select(:meal_ids, Meal.all, :id, :date, :prompt => true, :selected => meal.id, :style => "display: none;")
+        = f.submit "Add", :html => {:class => "btn", :type => "button"}

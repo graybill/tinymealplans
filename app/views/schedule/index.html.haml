@@ -1,0 +1,21 @@
+%h2= "Lunch for the week of #{@this_week}"
+#schedule.accordion
+
+  - @meals.each do |meal|
+    - opened = true if DateTime.now.strftime("%A") == meal.date.strftime("%A")
+
+    //Accordion
+    .accordion-group
+      .accordion-heading
+        %a.accodion-toggle{:href => "#collapse#{meal.id}", 'data-toggle' => 'collapse', 'data-parent' => '#schedule'}= "#{meal.date.strftime("%A")} (#{meal.foods.length})"
+      .accordion-body.collapse{:id => "collapse#{meal.id}", :class => opened ? 'in' : ''}
+        .accordion-inner
+          %ul{:id => "foodsInMeal#{meal.id}"}
+            - if meal.foods.empty?
+              %p Don't go hungry, yo. Add some food.
+            - meal.foods.each do |food|
+              %li= link_to food.name, "add_food_to_meal_path(food)"
+        = form_for @food, :url => {:action => 'create', :controller => 'foods'}, :class => 'form-inline', :remote => true do |f|
+          = f.text_field :name, :class => "input-large", :placeholder => "food"
+          = f.hidden_field :meal_ids, :value => meal.id.to_s
+          = f.submit "Add", :class => "btn btn-small btn-success"

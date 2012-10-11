@@ -1,0 +1,3 @@
+console.log($("#foodsInMeal<%= @meal.id %>"));
+$("#foodsInMeal<%= @meal.id %>").append("<li><%= @food.name %></li>");
+$("form").reset();

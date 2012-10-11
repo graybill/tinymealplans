@@ -1,0 +1,18 @@
+!!! 5
+%html
+  %head{'lang' => 'en'}
+    %meta{'http-equiv' => 'charset', :content => 'utf-8'}/
+    %meta{'name' => 'viewport', :content => 'width=device-width, initial-scale=1.0'}/
+    = stylesheet_link_tag "application", :media => "all"
+    = csrf_meta_tags
+  %body
+    = render 'shared/navbar'
+    #container.container
+      - if flash[:notice]
+        .alert
+          =flash[:notice]
+      = yield
+
+  %script
+    = yield :javascript
+  = javascript_include_tag "application"
