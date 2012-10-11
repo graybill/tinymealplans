@@ -9,7 +9,7 @@ class ScheduleControllerTest < ActionController::TestCase
   test "should create meals for the week only once" do
     get :index
     assert_equal 7, Meal.all.count
-    get :index
+    get :index # visit index again
     assert_equal 7, Meal.all.count
   end
 
