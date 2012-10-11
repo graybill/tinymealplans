@@ -5,6 +5,9 @@ class ScheduleController < ApplicationController
     @meals = Meal.find(:all, :conditions => {:date => this_week, :name => "lunch"})
     @this_week = this_week.first
     @food = Food.new
+
+    @food_names = Food.all.map{|f| f.name}
+
   end
 
   def create_meals_for_the_week    

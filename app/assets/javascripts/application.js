@@ -28,12 +28,24 @@ jQuery.fn.submitWithAjax = function() {
 
 $("#new_food").submitWithAjax();
 
-$('.modal').modal({show: false});
+$(function() {
 
-$( "#foods, #foodsInMeal" ).sortable({
-    connectWith: ".connectedSortable",
-    dropOnEmpty: true,
-    update: function(event, ui) {
-      console.log($(event));
-    }
-  }).disableSelection();
+  $("input#food_name").autocomplete({
+      source: function( request, response ) {
+      $.ajax({
+          url: "foodnames.json",
+          dataType: "json",
+          success: function(data) {
+            response($.map(data, function(item) {
+              return {
+                label: item.name,
+                id: item.id
+              };
+            }));
+          }
+        });
+      },
+      minLength: 2
+  });
+
+});

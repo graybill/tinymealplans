@@ -11,6 +11,13 @@ class FoodsController < ApplicationController
     end
   end
 
+  def food_names
+    @foods = Food.all
+    respond_to do |format|
+      format.json {render json: @foods.to_json(:only => [ :id, :name ])}
+    end
+  end
+
   # GET /foods/1
   # GET /foods/1.json
   def show

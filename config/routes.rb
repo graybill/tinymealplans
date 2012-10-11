@@ -6,4 +6,6 @@ TinymealRails::Application.routes.draw do
   resources :meals
   root :to => 'schedule#index'
 
+  match "/foodnames" => 'foods#food_names'
+
 end
