@@ -12,7 +12,6 @@ gem 'pg'
 gem 'heroku'
 
 group :development do
-  gem 'sqlite3'
   gem 'powder'
 end
 

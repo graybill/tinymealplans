@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20121011022715) do
   end
 
   create_table "foods_meals", :force => true do |t|
-    t.string "food_id"
-    t.string "meal_id"
+    t.integer "food_id"
+    t.integer "meal_id"
   end
 
   create_table "meals", :force => true do |t|
