@@ -10,7 +10,14 @@ class ScheduleController < ApplicationController
 
   end
 
-  def create_meals_for_the_week    
+  def this_week(start_date=DateTime.now)
+    if params[:date]
+      start_date = DateTime.parse(params[:date])
+    end
+    start_date.beginning_of_week.strftime("%Y-%m-%d")..start_date.end_of_week.strftime("%Y-%m-%d")
+  end
+
+  def create_meals_for_the_week
     this_week.each do |day|
       day = Date.parse(day)
       @meals = Meal.find(:all, :conditions => {:date => day.beginning_of_day..day.end_of_day})

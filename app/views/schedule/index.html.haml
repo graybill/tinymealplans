@@ -1,9 +1,15 @@
 %h2= "Lunch for the week of #{@this_week}"
 
+%div.navbar
+  .navbar-inner
+    = link_to "<< This Week", root_url + "?date=#{(DateTime.now.beginning_of_week).strftime("%Y-%m-%d")}", :class => "btn pull-left"
+
+    = link_to "Next Week >>", root_url + "?date=#{DateTime.now.next_week.strftime("%Y-%m-%d")}", :class => "btn pull-right"
+
 #log
 
 #schedule.accordion
-
+  
   - @meals.each do |meal|
     - opened = true if DateTime.now.strftime("%A") == meal.date.strftime("%A")
 
@@ -13,7 +19,7 @@
         %a.accodion-toggle{:href => "#collapse#{meal.id}", 'data-toggle' => 'collapse', 'data-parent' => '#schedule'}= "#{meal.date.strftime("%A")} (#{meal.foods.length})"
       .accordion-body.collapse{:id => "collapse#{meal.id}", :class => opened ? 'in' : ''}
         .accordion-inner
-          %ul{:id => "foodsInMeal#{meal.id}"}
+          %ul.unstyled{:id => "foodsInMeal#{meal.id}"}
             - if meal.foods.empty?
               %p Don't go hungry, yo. Add some food.
             - meal.foods.each do |food|
