@@ -1,5 +1,4 @@
 %div.navbar
   .navbar-inner
-    = link_to "<< This Week", root_url + "?date=#{(DateTime.now.beginning_of_week).strftime("%Y-%m-%d")}", :class => "btn pull-left"
-
-    = link_to "Next Week >>", root_url + "?date=#{DateTime.now.next_week.strftime("%Y-%m-%d")}", :class => "btn pull-right"
+    .active= link_to "<< This Week", "#thisWeek", :class => "btn pull-left", 'data-toggle' => 'tab'
+    = link_to "Next Week >>", "#nextWeek", :class => "btn pull-right", 'data-toggle' => 'tab'

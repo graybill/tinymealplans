@@ -5,4 +5,11 @@
 .accordion-heading {
   line-height: 40px;
   padding: 5px;
+  background: #666;
+  a {
+    display: block;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
