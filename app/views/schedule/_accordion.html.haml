@@ -1,5 +1,5 @@
 //Accordion
-.accordion-group
+.accordion-group.meal
   .accordion-heading
     %h3
       %a.accodion-toggle{:href => "#collapse#{meal.id}", 'data-toggle' => 'collapse', 'data-parent' => '#schedule'}= "#{meal.date.strftime("%A")} (#{meal.foods.length})"

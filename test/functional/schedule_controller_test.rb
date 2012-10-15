@@ -6,11 +6,11 @@ class ScheduleControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create meals for the week only once" do
+  test "should create meals only once" do
     get :index
-    assert_equal 7, Meal.all.count
+    assert_equal 14, Meal.all.count
     get :index # visit index again
-    assert_equal 7, Meal.all.count
+    assert_equal 14, Meal.all.count
   end
 
 end
