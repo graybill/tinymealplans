@@ -1,11 +1,11 @@
 #schedule.accordion.tab-content
   #thisWeek.tab-pane.active
-    %h2= "This week"
+    %h2= "This Week"
     - @meals.each do |meal|
       - opened = default_accordion_group(meal)
       = render 'accordion', :meal => meal, :opened => opened
   #nextWeek.tab-pane
-    %h2= "Next week"
+    %h2= "Next Week"
     - @next_weeks_meals.each do |meal|
       - opened = default_accordion_group(meal)
       = render 'accordion', :meal => meal, :opened => opened

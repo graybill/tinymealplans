@@ -90,4 +90,17 @@ class FoodsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def remove_food_from_meal
+    @meal = Meal.find(params[:meal_id])
+    @food = Food.find(params[:food_id])
+    @meal.foods.delete(@food)
+    respond_to do |format|
+        format.html { redirect_to root_url}
+        format.json {head :no_content}
+        format.js
+    end
+  end
+
 end

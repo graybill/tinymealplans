@@ -26,7 +26,7 @@ jQuery.fn.submitWithAjax = function() {
   return this;
 };
 
-$("#new_food").submitWithAjax();
+$("form").submitWithAjax();
 
 $(function() {
 

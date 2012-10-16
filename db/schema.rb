@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20121011022715) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "foods_meals", :force => true do |t|
+  create_table "foods_meals", :id => false, :force => true do |t|
     t.integer "food_id"
     t.integer "meal_id"
   end

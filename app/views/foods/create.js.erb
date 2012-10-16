@@ -1,1 +1,1 @@
-$("#foodsInMeal<%= @meal.id %>").append("<li><%= @food.name %></li>");
+$("#foodsInMeal<%= @meal.id %>").append("<%= escape_javascript(render :partial => 'foods/food_list_item', :locals => {:food => @food, :meal => @meal}) %>")

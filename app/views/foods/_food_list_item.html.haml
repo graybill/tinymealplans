@@ -1,0 +1,3 @@
+%li
+  = link_to food.name, food
+  = link_to 'Remove', remove_food_from_meal_path(:meal_id => meal.id, :food_id => food.id), :remote => true

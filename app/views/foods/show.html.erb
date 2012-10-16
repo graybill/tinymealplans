@@ -5,6 +5,11 @@
   <%= @food.name %>
 </p>
 
+<ul>
+  <% @food.meals.each do |meal| %>
+    <li><%= meal %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_food_path(@food) %> |
 <%= link_to 'Back', foods_path %>
