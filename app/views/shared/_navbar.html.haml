@@ -1,4 +1,5 @@
-%div.navbar
-  .navbar-inner
-    .active= link_to "This Week", "#thisWeek", :class => "btn btn-inverse pull-left", 'data-toggle' => 'tab'
-    = link_to "Next Week", "#nextWeek", :class => "btn btn-inverse pull-right", 'data-toggle' => 'tab'
+- unless params[:controller] == "welcome"
+  %div.navbar
+    .navbar-inner
+      .active= link_to "This Week", "#thisWeek", :class => "btn btn-inverse pull-left", 'data-toggle' => 'tab'
+      = link_to "Next Week", "#nextWeek", :class => "btn btn-inverse pull-right", 'data-toggle' => 'tab'

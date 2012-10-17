@@ -1,9 +1,13 @@
-%h1 Welcome#index
+%header.jumbotron.subhead.well
+  .row
+    .span10.offset1
+      %h2 Want to plan some lunch? 
+      %h3 Just make up a username. It will be your url.
+      = form_for User.new, :class => "form-inline" do |f|
+        .control-group
+          .controls
+            = f.text_field :handle, :placeholder => "sillymeals", :class => "input-medium"
+            = f.submit "Create", :class => "btn btn-primary"
+          %span.help-inline (No special characters. Numbers, dashes, and underscores are okay.)
 
-%h2 Want to plan? Just make up a username. It will be your url.
-= form_for User.new do |f|
-  = f.text_field :handle, :placeholder => "sillymeals"
-  = f.submit "Create"
-
-- User.all.each do |user|
-  %p= link_to user.handle, user_schedule_index_path(user)
+      %h4= "Or play with #{link_to "the demo", user_schedule_index_path("demo")}.".html_safe

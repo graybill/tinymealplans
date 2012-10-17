@@ -10,6 +10,6 @@
           = render :partial => 'foods/food_list_item', :locals => {:food => food, :meal => meal}
                 
       = form_for @food, :url => {:action => 'create', :controller => 'foods'}, :class => 'form-inline', :remote => true do |f|
-        = f.text_field :name, :class => "input-large", :placeholder => "food"
+        = f.text_field :name, :class => "input-medium", :placeholder => "food"
         = f.hidden_field :meal_ids, :value => meal.id.to_s
-        = f.submit "Add", :class => "btn btn-small btn-success"
+        = f.submit "Add", :class => "btn btn-primary"
