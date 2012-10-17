@@ -2,6 +2,7 @@ require 'test_helper'
 
 class MealsControllerTest < ActionController::TestCase
   setup do
+    @user = FactoryGirl.create(:user)
     @meal = FactoryGirl.create(:meal)
   end
 
@@ -18,7 +19,7 @@ class MealsControllerTest < ActionController::TestCase
 
   test "should create meal" do
     assert_difference('Meal.count') do
-      post :create, meal: { date: @meal.date, name: @meal.name }
+      post :create, meal: { date: @meal.date, name: @meal.name, user_id: @user.id }
     end
 
     assert_redirected_to meal_path(assigns(:meal))

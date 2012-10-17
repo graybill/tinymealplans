@@ -1,7 +1,14 @@
-Given /^I am on the schedule page$/ do
-  visit schedule_index_path
+Given /^I am a user$/ do 
+  @user = FactoryGirl.create(:user, :handle => "mrmcmuffin")
 end
 
+Given /^I am on my schedule page$/ do
+  visit user_schedule_index_path @user
+end
+
+Given /^I am on the welcome page$/ do
+  visit welcome_index_path
+end
 
 When /^I follow "(.*?)"$/ do |arg1|
   click_link arg1
@@ -10,8 +17,21 @@ When /^I follow "(.*?)"$/ do |arg1|
   end
 end
 
+When /^I create a new user named "(.*?)"$/ do |arg1|
+  within("#new_user") do
+    fill_in('user_handle', :with => arg1)
+  end
+  click_button("Create")
+end
+
 Then /^I should see (\d+) meals$/ do |arg1|
   page.should have_selector('div.meal', :count => arg1.to_i, :visible => true)
+end
+
+Then /^I should see an empty schedule$/ do
+  # page.should have_content("(0)", :count => 6)
+  # a.accordion_toggle each; check value for (0)
+  page.should have_selector('a.accordion-toggle') #, :count => 6, :text => /(0)/)
 end
 
 Given /^I add "(.*?)" to "(.*?)"$/ do |arg1, arg2|
@@ -35,9 +55,9 @@ Then /^I should not see "(.*?)"$/ do |arg1|
 end
 
 When /^I refresh the page$/ do
-  visit schedule_index_path
+  visit user_schedule_index_path @user
 end
 
-Given /^show me the page$/ do
+Then /^show me the page$/ do
   save_and_open_page
 end

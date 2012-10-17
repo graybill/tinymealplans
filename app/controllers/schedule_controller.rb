@@ -1,8 +1,8 @@
 class ScheduleController < ApplicationController
-  before_filter :create_meals_for_next_two_weeks
+  before_filter :set_user_and_build_schedule
   
   def index
-    @meals = Meal.find(:all, :conditions => {:date => the_week_of, :name => "lunch"}, :order => 'date')
+    @meals = Meal.find(:all, :conditions => {:date => the_week_of, :name => "lunch", :user_id => @user.id}, :order => 'date')
     @next_weeks_meals = Meal.find(:all, :conditions => {:date => the_week_of(DateTime.now + 7.days), :name => "lunch"})
     @this_week = the_week_of.first
     @food = Food.new
@@ -17,16 +17,9 @@ class ScheduleController < ApplicationController
     start_date.beginning_of_week.strftime("%Y-%m-%d")..start_date.end_of_week.strftime("%Y-%m-%d")
   end
 
-  def create_meals_for_next_two_weeks
-    [DateTime.now, DateTime.now + 7.days].each do |date|
-      the_week_of(date).each do |day|
-        day = Date.parse(day)
-        @meals = Meal.find(:all, :conditions => {:date => day.beginning_of_day..day.end_of_day})
-        if @meals.empty?
-          Meal.create({:date => day, :name => "lunch"})
-        end
-      end
-    end
+  def set_user_and_build_schedule
+    @user = User.find_by_handle(params[:handle]) || User.find(params[:handle])
+    @user.create_meals_for_next_two_weeks
   end
 
 end

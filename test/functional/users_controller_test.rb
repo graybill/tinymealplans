@@ -18,10 +18,10 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { email: @user.email, handle: @user.handle }
+      post :create, user: { handle: "assert_difference" }      
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to user_schedule_index_path(assigns(:user))
   end
 
   test "should show user" do

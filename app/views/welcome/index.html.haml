@@ -1,0 +1,9 @@
+%h1 Welcome#index
+
+%h2 Want to plan? Just make up a username. It will be your url.
+= form_for User.new do |f|
+  = f.text_field :handle, :placeholder => "sillymeals"
+  = f.submit "Create"
+
+- User.all.each do |user|
+  %p= link_to user.handle, user_schedule_index_path(user)
