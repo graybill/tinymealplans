@@ -3,7 +3,7 @@ class ScheduleController < ApplicationController
   
   def index
     @meals = Meal.find(:all, :conditions => {:date => the_week_of, :name => "lunch", :user_id => @user.id}, :order => 'date')
-    @next_weeks_meals = Meal.find(:all, :conditions => {:date => the_week_of(DateTime.now + 7.days), :name => "lunch"})
+    @next_weeks_meals = Meal.find(:all, :conditions => {:date => the_week_of(DateTime.now + 7.days), :name => "lunch", :user_id => @user.id})
     @this_week = the_week_of.first
     @food = Food.new
 
