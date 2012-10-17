@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :handle
   # validate valid url option
 
+  def to_param  # overridden
+    handle
+  end
+
   def create_meals_for_next_two_weeks
     [DateTime.now, DateTime.now + 7.days].each do |date|
       date_range = date.beginning_of_week.strftime("%Y-%m-%d")..date.end_of_week.strftime("%Y-%m-%d")

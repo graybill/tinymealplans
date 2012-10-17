@@ -97,7 +97,7 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:food_id])
     @meal.foods.delete(@food)
     respond_to do |format|
-        format.html { redirect_to root_url}
+        format.html { redirect_to request.env['HTTP_REFERER'] }
         format.json {head :no_content}
         format.js
     end
