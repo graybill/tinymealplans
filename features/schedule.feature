@@ -1,10 +1,9 @@
 Feature: Schedule food into meals.
 
-@wip @javascript
+@javascript
 Scenario: Create schedule for new user
   Given I am on the welcome page
   When I create a new user named "Joe"
-  Then show me the page
   Then I should see an empty schedule
   And I should see "Cool, here is your schedule!"
 

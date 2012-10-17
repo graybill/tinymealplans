@@ -29,9 +29,7 @@ Then /^I should see (\d+) meals$/ do |arg1|
 end
 
 Then /^I should see an empty schedule$/ do
-  # page.should have_content("(0)", :count => 6)
-  # a.accordion_toggle each; check value for (0)
-  page.should have_selector('a.accordion-toggle') #, :count => 6, :text => /(0)/)
+  page.should have_selector('div.meal a', :count => 6, :text => /(0)/, :visible => true)
 end
 
 Given /^I add "(.*?)" to "(.*?)"$/ do |arg1, arg2|
