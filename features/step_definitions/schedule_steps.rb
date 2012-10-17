@@ -23,7 +23,7 @@ Given /^I add "(.*?)" to "(.*?)"$/ do |arg1, arg2|
 end
 
 When /^I remove "(.*?)" from "(.*?)"$/ do |arg1, arg2|
-  click_link("Remove")
+  click_link("remove")
 end
 
 Then /^I should see "(.*?)"$/ do |arg1|

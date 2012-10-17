@@ -1,1 +1,1 @@
-$("#foodsInMeal<%= @meal.id %> li a").attr('href', "/foods/<%= @meal.id %>").first().parent().remove();
+$("#foodsInMeal<%= @meal.id %> tr a").attr('href', "/foods/<%= @meal.id %>").first().parent().parent().remove();
