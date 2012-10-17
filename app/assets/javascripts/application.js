@@ -27,25 +27,3 @@ jQuery.fn.submitWithAjax = function() {
 };
 
 $("form").submitWithAjax();
-
-$(function() {
-
-  $("input#food_name").autocomplete({
-      source: function( request, response ) {
-      $.ajax({
-          url: "foodnames.json",
-          dataType: "json",
-          success: function(data) {
-            response($.map(data, function(item) {
-              return {
-                label: item.name,
-                id: item.id
-              };
-            }));
-          }
-        });
-      },
-      minLength: 2
-  });
-
-});
