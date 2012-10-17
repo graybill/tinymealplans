@@ -1,3 +1,5 @@
-%li
-  = link_to food.name, food
-  = link_to 'Remove', remove_food_from_meal_path(:meal_id => meal.id, :food_id => food.id), :remote => true
+%tr
+  %td= link_to food.name, food
+  %td
+    %a{:href => remove_food_from_meal_path(:meal_id => meal.id, :food_id => food.id), :remote => true, :title => "remove"}
+      %i.icon-remove

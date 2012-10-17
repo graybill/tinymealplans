@@ -5,12 +5,11 @@
       %a.accodion-toggle{:href => "#collapse#{meal.id}", 'data-toggle' => 'collapse', 'data-parent' => '#schedule'}= "#{meal.date.strftime("%A")} (#{meal.foods.length})"
   .accordion-body.collapse{:id => "collapse#{meal.id}", :class => opened ? 'in' : ''}
     .accordion-inner
-      %ul.unstyled{:id => "foodsInMeal#{meal.id}"}
+      %table.table{:id => "foodsInMeal#{meal.id}"}
         - meal.foods.each do |food|
           = render :partial => 'foods/food_list_item', :locals => {:food => food, :meal => meal}
-          
-            
-    = form_for @food, :url => {:action => 'create', :controller => 'foods'}, :class => 'form-inline', :remote => true do |f|
-      = f.text_field :name, :class => "input-large", :placeholder => "food"
-      = f.hidden_field :meal_ids, :value => meal.id.to_s
-      = f.submit "Add", :class => "btn btn-small btn-success"
+                
+      = form_for @food, :url => {:action => 'create', :controller => 'foods'}, :class => 'form-inline', :remote => true do |f|
+        = f.text_field :name, :class => "input-large", :placeholder => "food"
+        = f.hidden_field :meal_ids, :value => meal.id.to_s
+        = f.submit "Add", :class => "btn btn-small btn-success"
