@@ -1,4 +1,6 @@
 TinymealRails::Application.routes.draw do
+  resources :users
+
   get "schedule/index"
 
   resources :foods, :meals
