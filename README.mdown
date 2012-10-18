@@ -1,1 +1,3 @@
+TinyMeal is a Rails app for planning packed lunches.
+
 [![Build Status](https://travis-ci.org/graybill/tinymealplans.png)](https://travis-ci.org/graybill/tinymealplans)
