@@ -1,4 +1,7 @@
 %tr{:id => "food#{food.id}", :class => food.name}
+  %td
+    -if !food_icon(food).empty?
+      = image_tag food_icon(food)
   %td= food.name
   %td
     %a{:href => remove_food_from_meal_path(:meal_id => meal.id, :food_id => food.id), 'data-remote' => 'true', :title => "remove"}
