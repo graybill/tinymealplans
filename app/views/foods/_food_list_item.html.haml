@@ -1,5 +1,5 @@
-%tr
-  %td= link_to food.name, food
+%tr{:id => "food#{food.id}", :class => food.name}
+  %td= food.name
   %td
     %a{:href => remove_food_from_meal_path(:meal_id => meal.id, :food_id => food.id), 'data-remote' => 'true', :title => "remove"}
       %i.icon-remove

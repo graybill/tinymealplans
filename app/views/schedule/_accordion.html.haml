@@ -1,5 +1,4 @@
-//Accordion
-.accordion-group.meal
+.accordion-group.meal{:class => meal.date.strftime("%A").downcase}
   .accordion-heading
     %h3
       %a.accordion-toggle{:href => "#collapse#{meal.id}", 'data-toggle' => 'collapse', 'data-parent' => '#schedule'}

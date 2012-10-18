@@ -32,16 +32,18 @@ Then /^I should see an empty schedule$/ do
   page.should have_selector('div.meal a', :count => 6, :text => /(0)/, :visible => true)
 end
 
-Given /^I add "(.*?)" to "(.*?)"$/ do |arg1, arg2|
-  # does not use the day (yet)
-  within("#new_food") do
-    fill_in('food_name', :with => arg1)
+Given /^I add "(.*?)" to "(.*?)"$/ do |food, day|
+  within(".#{day.downcase} #new_food") do
+    fill_in('food_name', :with => food)
   end
   click_button("Add")
 end
 
-When /^I remove "(.*?)" from "(.*?)"$/ do |arg1, arg2|
-  click_link("remove")
+When /^I remove "(.*?)" from "(.*?)"$/ do |food, day|
+  # find food in day
+  within(".#{day.downcase} tr.#{food}") do
+    click_link("remove")
+  end
 end
 
 Then /^I should see "(.*?)"$/ do |arg1|
