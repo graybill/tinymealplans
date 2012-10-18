@@ -1,13 +1,13 @@
 %header.jumbotron.subhead.well
   .row
     .span10.offset1
-      %h2 Want to plan some lunch? 
+      %h2 TinyMeal is a little app for planning packed lunches. 
       %h3 Just make up a username. It will be your url.
       = form_for User.new, :class => "form-inline" do |f|
         .control-group
           .controls
             = f.text_field :handle, :placeholder => "sillymeals", :class => "input-medium"
             = f.submit "Create", :class => "btn btn-primary"
-          %span.help-inline (No special characters. Numbers, dashes, and underscores are okay.)
+          %span.help-inline (No special characters or spaces. Numbers, dashes, and underscores are okay.)
 
       %h4= "Or play with #{link_to "the demo", user_schedule_index_path("demo")}.".html_safe
