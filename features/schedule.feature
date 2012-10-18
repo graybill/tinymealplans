@@ -22,6 +22,7 @@ Scenario: Add food to meal
   And I am on my schedule page
   And I add "rice" to "Monday"
   Then I should see "rice"
+  And I should see "Monday (1)"
   When I refresh the page
   Then I should see "rice"
 
@@ -33,5 +34,6 @@ Scenario: Remove food from meal
   And I add "rice" to "Monday"
   When I remove "rice" from "Monday"
   Then I should not see "rice"
+  And I should see "Monday (0)"
   When I refresh the page
   Then I should not see "rice"

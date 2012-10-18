@@ -1,1 +1,6 @@
+var foodDiv = $("#foodsInMeal<%= @meal.id %>");
+var container = $(foodDiv).parents()[2];
+var span = $(container).find('span.count');
+
 $("#foodsInMeal<%= @meal.id %> tr a").attr('href', "/foods/<%= @meal.id %>").first().parent().parent().remove();
+$(span).empty().append("(<%= @meal.foods.count %>)");

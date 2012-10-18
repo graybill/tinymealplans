@@ -2,7 +2,9 @@
 .accordion-group.meal
   .accordion-heading
     %h3
-      %a.accordion-toggle{:href => "#collapse#{meal.id}", 'data-toggle' => 'collapse', 'data-parent' => '#schedule'}= "#{meal.date.strftime("%A")} (#{meal.foods.length})"
+      %a.accordion-toggle{:href => "#collapse#{meal.id}", 'data-toggle' => 'collapse', 'data-parent' => '#schedule'}
+        = "#{meal.date.strftime("%A")}" 
+        %span.count= "(#{meal.foods.length})"
   .accordion-body.collapse{:id => "collapse#{meal.id}", :class => opened ? 'in' : ''}
     .accordion-inner
       %table.table{:id => "foodsInMeal#{meal.id}"}
