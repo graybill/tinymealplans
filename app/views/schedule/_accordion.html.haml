@@ -6,7 +6,7 @@
         %span.count= "(#{meal.foods.length})"
   .accordion-body.collapse{:id => "collapse#{meal.id}", :class => opened ? 'in' : ''}
     .accordion-inner
-      %table.table{:id => "foodsInMeal#{meal.id}"}
+      %table.table.table-hover{:id => "foodsInMeal#{meal.id}"}
         - meal.foods.each do |food|
           = render :partial => 'foods/food_list_item', :locals => {:food => food, :meal => meal}
                 

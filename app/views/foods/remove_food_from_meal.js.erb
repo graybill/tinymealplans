@@ -1,5 +1,8 @@
 var foodDiv = $("#foodsInMeal<%= @meal.id %>");
 var container = $(foodDiv).parents()[2];
 var span = $(container).find('span.count');
-$("#foodsInMeal<%= @meal.id %> tr#food<%= params[:food_id] %>").remove();
+
+var tr = $("#foodsInMeal<%= @meal.id %> tr#food<%= params[:food_id] %>");
+
+$(tr).addClass('error').fadeOut();
 $(span).empty().append("(<%= @meal.foods.count %>)");

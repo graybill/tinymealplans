@@ -6,10 +6,16 @@
   line-height: 40px;
   padding: 5px;
   background: #666;
-  a {
-    display: block;
-    &:hover {
+  h3 {
+    line-height: 10px;
+    a {
+      display: block;
+      &:hover {
       text-decoration: none;
     }
   }
+  }
+}
+.table td, .table th {
+  border: 0;
 }

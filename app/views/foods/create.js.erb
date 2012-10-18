@@ -1,7 +1,9 @@
 var foodDiv = $("#foodsInMeal<%= @meal.id %>");
 var container = $(foodDiv).parents()[2];
 var span = $(container).find('span.count');
+var tr = $("<%= escape_javascript(render :partial => 'foods/food_list_item', :locals => {:food => @food, :meal => @meal}) %>");
 
-$(foodDiv).append("<%= escape_javascript(render :partial => 'foods/food_list_item', :locals => {:food => @food, :meal => @meal}) %>")
+$(foodDiv).append($(tr).hide());
+$(tr).fadeIn();
 $(span).empty().append("(<%= @meal.foods.count %>)");
 $(foodDiv).next("form").find("input#food_name").val("");
