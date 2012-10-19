@@ -6,8 +6,8 @@
       = form_for User.new, :class => "form-inline" do |f|
         .control-group
           .controls
-            = f.text_field :handle, :placeholder => "food name", :class => "input-xlarge", :value => random_name()
-            = f.submit "Create", :class => "btn btn-primary btn-large"
+            = f.text_field :handle, :placeholder => "make up a name", :class => "input-xlarge", :value => random_name()
+            = f.submit "Create Schedule", :class => "btn btn-primary btn-large"
           %span.help-inline (No special characters or spaces. Numbers, dashes, and underscores are okay.)
 
       %h4= "Or play with #{link_to "the demo", user_schedule_index_path("demo")}.".html_safe
