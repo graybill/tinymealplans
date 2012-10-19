@@ -27,3 +27,11 @@ jQuery.fn.submitWithAjax = function() {
 };
 
 $("form").submitWithAjax();
+
+$(document).ready(function(){
+  $("input#user_handle").focus(function(){
+    $(this).val("");
+  });
+  
+
+});

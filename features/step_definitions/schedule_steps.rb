@@ -17,13 +17,6 @@ When /^I follow "(.*?)"$/ do |arg1|
   end
 end
 
-When /^I create a new user named "(.*?)"$/ do |arg1|
-  within("#new_user") do
-    fill_in('user_handle', :with => arg1)
-  end
-  click_button("Create")
-end
-
 Then /^I should see (\d+) meals$/ do |arg1|
   page.should have_selector('div.meal', :count => arg1.to_i, :visible => true)
 end
