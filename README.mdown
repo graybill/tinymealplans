@@ -1,3 +1,11 @@
+# About
+
 TinyMeal is a Rails app for planning packed lunches.
 
 [![Build Status](https://travis-ci.org/graybill/tinymealplans.png)](https://travis-ci.org/graybill/tinymealplans)
+
+# Plans
+
+1. Lay Ember.js on top of existing Rails back-end
+2. Add opt-in user auth; require email, add password, edit basic settings (ex: days to show in schedule)
+3. Add Jasmine JS testing
