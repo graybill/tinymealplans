@@ -14,10 +14,12 @@
 //= require jquery_ujs
 //= require_tree .
 
+// *** FIXME: Shoe-horned Javascript until we lay Ember on top
+
+// *** Rails 2 AJAX form submission code
 jQuery.ajaxSetup({
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript");}
 });
-
 jQuery.fn.submitWithAjax = function() {
   this.submit(function() {
     $.post(this.action, $(this).serialize(), null, "script");
@@ -25,13 +27,13 @@ jQuery.fn.submitWithAjax = function() {
   });
   return this;
 };
-
 $("form").submitWithAjax();
 
-$(document).ready(function(){
+// *** document.ready
+$(document).ready(function(){  
+  // Clear welcome page user input on click
   $("input#user_handle").focus(function(){
     $(this).val("");
   });
   
-
 });
